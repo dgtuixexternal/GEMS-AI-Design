@@ -1,345 +1,745 @@
 
 # GEMS Design System — Components / Button
 
-> **MANDATORY:** All buttons MUST use official GEMS General Button components from the connected Figma Design System. Preserve their original component properties, variants, sizes, states, colors, icons, and styling. **GEMS Button CCM MUST NOT be used.**
+> **MANDATORY:** All buttons MUST use official GEMS General Button components from the connected Figma Design System. Follow existing variants, sizes, colors, typography, icons, states, and component properties. **Button CCM is strictly prohibited.**
 
-## 1. Source of Truth & Priority
+## 1. Purpose & Source of Truth
 
-**Official Figma References**
+Button digunakan untuk tindakan pengguna seperti membuat, menyimpan, mengubah, menghapus, mengirim, membatalkan, mengonfirmasi, dan menghentikan proses.
+
+**Core Principle:** Button hierarchy is determined by action priority, UI context, and consequences—not by the button label alone.
+
+### Official Figma References
 
 - [GEMS Button Library](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=12-1130)
-- [General Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=294-4425)
+- [GEMS General Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=294-4425)
 - [Button Close X](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=310-1955)
 - [Social Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=1869-10020)
 - [Social Button Groups](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=1869-10291)
 
-**Priority Order**
+### Reference Priority
 
-1. **GEMS General Button:** Official component, hierarchy, size, state, and properties.
-2. **GEMS Components:** Button implementation within existing GEMS components.
-3. **GEMS Page Samples & UX Patterns:** Contextual usage, hierarchy, placement, and action grouping.
-4. **Product Requirements:** Business actions, terminology, permissions, and workflows.
-5. **General UI/UX Principles:** Fallback only when GEMS has no specific guidance.
+1. **Official GEMS General Button:** Component properties, hierarchy, sizes, states, and styling.
+2. **GEMS Components:** Button usage within existing reusable components.
+3. **GEMS Page Samples & UX Patterns:** Contextual hierarchy, grouping, placement, and responsive behavior.
+4. **Product HSD/BRD:** Supported actions, user permissions, labels, and business workflows.
+5. **General UI/UX Principles:** Fallback when no specific GEMS guidance exists.
 
-Use the connected GEMS Figma Design System as the source of truth. Read only the components, Page Samples, and UX Patterns relevant to the requested screen.
+Read only the GEMS components, Page Samples, and UX Patterns relevant to the requested interface.
 
-If references conflict, official GEMS component specifications take precedence over visual examples.
+**GEMS component specifications take precedence over sample visuals.**
 
-## 2. Allowed Button Components
+## 2. Button Variants & Hierarchy
 
-### General Button
+### 2.1 Available Variants
 
-Use the existing GEMS General Button with these official hierarchy variants:
+Use the exact hierarchy variants available in the official GEMS General Button component.
 
-| Hierarchy | Purpose |
-|---|---|
-| `Primary` | Main or highest-priority action |
-| `Secondary color` | Contextual supporting action requiring color emphasis |
-| `Secondary gray` | Neutral supporting or alternative action |
-| `Tertiary color` | Low-emphasis action with contextual color |
-| `Tertiary gray` | Low-emphasis neutral action |
-| `Link color` | Text-style action with contextual color |
-| `Link gray` | Text-style neutral action |
+| Variant | Visual Hierarchy | Purpose |
+|---|---|---|
+| `Primary` | Highest | Main action with strongest visual emphasis |
+| `Secondary color` | Medium | Contextual action requiring color emphasis |
+| `Secondary gray` | Medium | Neutral supporting or utility action |
+| `Tertiary color` | Low | Additional action with subtle color emphasis |
+| `Tertiary gray` | Low | Additional neutral action |
+| `Link color` | Text-based | Colored text-style action |
+| `Link gray` | Text-based | Neutral text-style action |
 
-**Official sizes:** `sm`, `md`, `lg`, `xl`, `2xl`.
+**Implementation Scope**
 
-**Official states:** `Default`, `Hover`, `Focused`, `Disabled`.
+- Primary, Secondary Color, Secondary Gray, and Tertiary Gray have defined contextual guidance below.
+- Tertiary Color has general principles, but no universal product-specific example has been established.
+- Link Color and Link Gray exist in GEMS, but their contextual use MUST follow official GEMS references.
+- Do not invent business usage rules for variants whose application is not specified.
 
-**Official icon configurations:** Follow available GEMS component properties, including default, leading icon/dot, and icon-only configurations where supported.
+### 2.2 Button Usage Matrix
 
-Apply the complete existing component variant. Do not recreate its appearance manually.
+| Variant | When to Use | When NOT to Use | Example |
+|---|---|---|---|
+| Primary | Highest-priority action within an action group | Low-priority supporting actions | Simpan, Buat Pesanan, Konfirmasi |
+| Secondary Color | Contextual action requiring color emphasis without dominant solid styling | Neutral actions suited to Secondary Gray | Ubah Pesanan, Hapus, Stop Charging |
+| Secondary Gray | Supporting, cancel, back, edit, export, or utility action | Main action requiring strongest emphasis | Batal, Kembali, Edit, Ekspor Data |
+| Tertiary Color | Additional low-priority action requiring subtle color | Main actions or important confirmations | Follow approved GEMS context |
+| Tertiary Gray | Additional low-priority neutral action | Actions requiring high emphasis | Neutral additional action |
+| Link Color | Text-style action when specified by GEMS | Replacing a required standard Button without justification | Follow official GEMS pattern |
+| Link Gray | Neutral text-style action when specified by GEMS | Replacing important primary or confirmation actions | Follow official GEMS pattern |
 
-### Button Close X
+### 2.3 General Hierarchy Rules
 
-Use the official GEMS Button Close X for dismissing or closing applicable surfaces such as dialogs, panels, and overlays.
+- MUST determine hierarchy from action importance, page context, consequences, and related actions.
+- MUST use existing GEMS Button variants.
+- SHOULD have one visually dominant Primary action per action group.
+- MAY use approved exceptions defined by GEMS contextual patterns.
+- MUST maintain consistent hierarchy for equivalent actions across screens.
+- MUST NOT make every button Primary.
+- MUST NOT select a variant only because its label contains `Edit`, `Delete`, `Save`, or `Confirm`.
+- MUST NOT force a Primary button into an action group that does not require one.
 
-- Follow its available size, background, and state properties.
-- Respect light/dark-background configurations.
-- Position it according to the relevant GEMS component or UX Pattern.
-- Do not replace it with a manually drawn X or custom icon button.
+## 3. Primary Button
 
-### Social Button & Social Button Groups
+### 3.1 Definition
 
-Use official GEMS Social Button components only for applicable social authentication or integration actions.
+Primary is the highest-priority action within a specific page, section, form, dialog, or action group.
 
-- Select the correct supported provider, theme, supporting-text option, and state.
-- Use official Social Button Groups when the relevant pattern requires grouped social actions.
-- Follow existing `Brand`, `Color`, or `Gray` theme options as defined by the component.
-- Social-specific brand styling is permitted only within the official Social Button component—not as permission to use CCM or invent product button colors.
-- Never introduce a social provider or login method that the product does not support.
+### 3.2 When to Use
 
-## 3. Strict CCM Exclusion
+- Save data or changes.
+- Create new records.
+- Submit requests or reports.
+- Confirm the main action.
+- Execute the primary purpose of the current workflow.
 
-**MUST NOT**
+### 3.3 Examples
 
-- Use any Button component, instance, variant, or styling from **GEMS CCM**.
-- Use CCM-specific button colors, effects, sizes, typography, or interaction patterns.
-- Duplicate or recreate a CCM button as a custom component.
-- Copy CCM styling from Page Samples or UX Patterns into General products.
-- Treat CCM buttons as equivalent alternatives to GEMS General Button.
+| Context | Button Label | Variant |
+|---|---|---|
+| Create form | Simpan | Primary |
+| Order form | Buat Pesanan | Primary |
+| Submission | Kirim Pengajuan | Primary |
+| Confirmation modal | Konfirmasi | Primary |
+| Page Header | Ubah Data Aset | Primary |
+
+### 3.4 Rules
 
 **MUST**
+- Use Primary for the most important action within its group.
+- Preserve official GEMS component styling.
+- Apply the approved semantic color and state.
+- Make its visual priority consistent with its actual purpose.
 
-- Use official GEMS General Button components.
-- Use GEMS Foundation Color tokens and component-defined color properties.
-- Preserve original GEMS component references and available variants.
+**SHOULD**
+- Limit Primary to one per action group.
+- Pair Primary with Secondary Gray when a neutral alternative is needed.
 
-If a design reference contains CCM buttons, use it only to understand the workflow or content. Replace the button implementation with the appropriate GEMS General Button.
-
-If no suitable General Button implementation exists, request human direction before introducing a new button design.
-
-## 4. Button Hierarchy & Selection
-
-Choose button hierarchy based on **action importance, user context, consequences, and the surrounding action group**—not simply the action label.
-
-| Hierarchy | Typical Usage |
-|---|---|
-| Primary | Save, submit, create, confirm, or complete a main task |
-| Secondary color | Contextual edit, delete, or process-control action when shown by GEMS patterns |
-| Secondary gray | Cancel, back, supporting edit, export, or utility action |
-| Tertiary color | Subtle colored action when supported by a relevant GEMS pattern |
-| Tertiary gray | Subtle neutral or lower-priority action |
-| Link color / gray | Text-based actions when the component and context support them |
-
-### Primary
-
-Use for the main action in a page section, form, dialog, or action group.
-
-Examples:
-- `Simpan`
-- `Simpan Perubahan`
-- `Buat Pesanan`
-- `Kirim Pengajuan`
-- `Konfirmasi`
-
-Rules:
-- **SHOULD use one Primary per action group**, unless an approved GEMS pattern explicitly requires otherwise.
-- Do not apply Primary to every visible button.
-- Do not assume every `Edit`, `Delete`, or `Confirm` action must be Primary.
-- Use an approved contextual color variation only when supported by official GEMS specifications or patterns.
-
-### Secondary Color
-
-Use when an action needs contextual color emphasis but is not the main action.
-
-Examples from GEMS contextual patterns:
-- `Ubah Pesanan` in a table row.
-- `Hapus` with red outline on a detail page.
-- `Stop Charging` with red outline during an active process.
-
-Rules:
-- Match the exact approved GEMS styling and semantic color.
-- Destructive actions do **not** automatically require solid red buttons.
-- Do not use Secondary Color for every supporting action.
-
-### Secondary Gray
-
-Use for neutral, alternative, or supporting actions.
-
-Examples:
-- `Batal`
-- `Kembali`
-- `Edit`
-- `Ekspor Data`
-- `Unduh Kode QR`
-
-Rules:
-- Commonly pairs with Primary, but can be used alone.
-- `Edit` may be Secondary Gray when it supports another action.
-- Keep neutral actions visually subordinate to the main action.
-
-### Tertiary Color & Tertiary Gray
-
-Use for low-priority actions when supported by the relevant GEMS component, Page Sample, or UX Pattern.
-
-- `Tertiary color`: Subtle action with contextual color.
-- `Tertiary gray`: Subtle neutral action.
-
-Do not invent specific business use cases or color meanings for these variants. If their intended application is unclear, use a clearly supported GEMS pattern or request human direction.
-
-### Link Color & Link Gray
-
-Use only where GEMS supports text-based button actions.
-
-- Preserve official visual treatment and interaction behavior.
-- Do not use Link variants merely to avoid button spacing constraints.
-- Do not replace a required standard button with a Link button without contextual justification.
-- If usage is unclear, follow the relevant GEMS component or request human direction.
-
-## 5. Size, Color, Icons & States
-
-### Size
-
-Select only an existing official GEMS Button size:
-
-`sm` / `md` / `lg` / `xl` / `2xl`
-
-**Size selection MUST follow:**
-1. Original GEMS component specification.
-2. Equivalent use in the relevant Page Sample or UX Pattern.
-3. Surrounding UI density, action importance, and available space.
-
-Rules:
-- Maintain consistent sizing within the same action group.
-- Follow GEMS sizing for buttons inside tables, forms, dialogs, cards, and headers.
-- Use the correct responsive size when GEMS specifies different breakpoint behavior.
-- Never invent dimensions, padding, height, or font sizes.
-- Do not manually stretch internal button properties to fit a layout; adjust the surrounding container or use an officially supported size.
-- Preserve component-defined minimum interaction area and usability.
-
-### Color
-
-- Apply GEMS General semantic color tokens.
-- Follow color values defined by the selected official Button variant.
-- Use warning, success, or destructive emphasis only when an approved GEMS pattern supports it.
-- Do not choose color solely from the action verb.
-- Never hardcode HEX, RGB, HSL, or unsupported color values.
-- Never use CCM color tokens or CCM button styling.
-
-### Icons
-
-- Use official GEMS icons according to `icons.md`.
-- Preserve the button component's icon placement, size, spacing, and alignment.
-- Use icon-only buttons only where the component and interaction context support them.
-- Icon-only actions MUST remain understandable through accessible naming or tooltips where appropriate.
-- Do not replace existing GEMS component icons with arbitrary alternatives.
-- Do not insert an icon when the original GEMS component or pattern does not require one.
-
-### States
-
-| State | Rule |
-|---|---|
-| `Default` | Normal interactive appearance |
-| `Hover` | Official pointer-hover appearance; not a selected or clicked state |
-| `Focused` | Preserve official visible keyboard-focus treatment |
-| `Disabled` | Official disabled appearance; action must not execute |
-
-Additional rules:
-- Implement functional interaction behavior consistent with the displayed state.
-- Do not simulate Disabled using opacity alone.
-- Do not use Disabled as a substitute for form validation or user feedback.
-- Provide an explanation when the reason for Disabled is not obvious.
-- Do not invent unsupported loading, active, pressed, or other state variants.
-- If processing feedback is needed, follow an existing GEMS component or approved UX Pattern.
-
-## 6. Contextual Button Patterns
-
-Follow the **equivalent official GEMS Page Sample or UX Pattern** when selecting hierarchy, placement, grouping, and order.
-
-These examples describe approved contextual usage—not universal rules for every product.
-
-| UI Context | Button Usage |
-|---|---|
-| Form actions | `Batal` — Secondary Gray; `Simpan` — Primary |
-| Positive confirmation | `Batal` — Secondary Gray; `Konfirmasi` — Primary Green Solid, only where supported by the official GEMS pattern |
-| Negative confirmation | `Batal` — Secondary Gray; `Konfirmasi` — Primary Red Solid, only where supported by the official GEMS pattern |
-| Approval decision | `Tolak` — Red Solid; `Setujui` — Green Solid, as an approved two-solid-button exception |
-| Page header | `Ekspor Data` — Secondary Gray; `Ubah Data Aset` — Primary |
-| Table row | `Ubah Pesanan` — Secondary Color |
-| Detail page | `Hapus` — Secondary Color Red Outline; `Edit Pesanan` — Secondary Gray |
-| Active process | `Edit` — Secondary Gray; `Stop Charging` — Secondary Color Red Outline |
-| Standalone utility | `Unduh Kode QR` — Secondary Gray |
-
-### Contextual Rules
-
-- Follow the action grouping, hierarchy, placement, and ordering shown in relevant GEMS references.
-- A page or group does not always need a Primary button.
-- Two solid decision buttons are allowed only for an explicitly supported GEMS pattern, such as the approval example above.
-- Do not interpret red/green visual styling as authorization to change the product's approval process.
-- Confirmation dialogs must reflect actual action consequences.
-- Destructive actions must use the relevant GEMS confirmation or UX Pattern when required.
-- Do not universally apply the same button combination to every page.
-- Preserve the meaning of the actions while adapting labels and available actions to the product.
-
-## 7. Placement, Grouping & Responsive Behavior
-
-- Place buttons according to the relevant GEMS component, Page Sample, or UX Pattern.
-- Keep the main action visually prominent within its action group.
-- Group related actions; separate unrelated actions appropriately.
-- Maintain GEMS spacing, alignment, and responsive behavior.
-- Follow `spacing-radius.md` for surrounding layout spacing where applicable.
-- Maintain consistent button alignment across similar pages.
-- In tables, preserve compact row-action patterns without overcrowding cells.
-- In forms and dialogs, preserve the official action order and hierarchy.
-- In page headers, place actions according to the GEMS header pattern.
-- Avoid adding redundant buttons when the same action already exists in the relevant workflow.
-- On smaller screens, adapt the container or action layout using supported GEMS patterns without changing component styling.
-
-## 8. Button Labels & Product Context
-
-Every button MUST represent a real action supported by the product.
-
-**Label rules:**
-- Use concise, clear, action-oriented language.
-- Follow terminology from the approved product requirements, modules, and business workflows.
-- Match the actual operation and its consequences.
-- Keep terminology consistent across screens.
-- Differentiate primary actions from alternatives through meaning and hierarchy.
-
-Examples:
-- `Simpan Perubahan`
-- `Buat Pesanan`
-- `Kirim Pengajuan`
-- `Hapus`
-- `Batal`
-- `Ekspor Data`
-- `Unduh Kode QR`
-- `Stop Charging`
+**MAY**
+- Use approved positive or negative solid styling for specific GEMS confirmation patterns.
 
 **MUST NOT**
-- Copy sample labels when unrelated to the product.
-- Invent actions, permissions, or business workflows.
-- Use unclear labels such as `OK` when a more meaningful action is needed.
-- Add actions solely to fill empty interface space.
-- Assign a high-priority visual style to an action that is not actually important.
+- Use Primary for all visible actions.
+- Use Primary merely because an action changes data.
+- Invent custom Primary colors or variants.
+- Apply a red/green Primary outside officially supported contexts.
 
-Button availability must follow user roles, permissions, workflow status, and product requirements.
+## 4. Secondary Color Button
 
-When essential business behavior is unknown and cannot be inferred safely, request human clarification.
+### 4.1 Definition
 
-## 9. Application Rules for Claude AI
+Secondary Color provides contextual color emphasis with the official GEMS visual treatment, including the outline appearance used in approved patterns.
 
-When creating or modifying GEMS interfaces:
+It is less visually dominant than Primary.
 
-1. Understand the product module, user role, and supported actions.
-2. Identify each action's purpose, priority, context, and consequences.
-3. Select the existing **GEMS General Button** hierarchy and size.
-4. Follow the relevant GEMS component, Page Sample, or UX Pattern for placement and grouping.
-5. Apply official component properties, semantic colors, icons, and states.
-6. Adapt labels and available actions to the product requirements.
+### 4.2 When to Use
 
-These are implementation instructions—not a separate validation report. Do not generate an additional compliance checklist unless requested.
+- An action needs contextual color emphasis.
+- A table or detail action requires stronger distinction than a neutral button.
+- An action's consequence needs visual differentiation.
+- A solid Primary appearance would be too dominant.
 
-If the exact pattern is unavailable, select the closest officially supported General Button configuration without inventing variants. Request human approval if a new component, unsupported style, or unresolved business decision would otherwise be required.
+### 4.3 Examples
 
-## 10. Strict Button Rules
+| Context | Button Label | Visual |
+|---|---|---|
+| Table Row | Ubah Pesanan | Colored Outline |
+| Detail Page | Hapus | Red Outline |
+| Live Charging Session | Stop Charging | Red Outline |
 
-### MUST
+### 4.4 Rules
 
-- Use official GEMS **General Button**, never CCM.
-- Preserve component references, hierarchy, sizes, colors, states, and icon configurations.
-- Follow relevant GEMS component specifications and contextual patterns.
-- Choose hierarchy based on actual action importance and consequences.
-- Follow official GEMS Foundations for color, typography, spacing, and effects.
-- Maintain accessible focus, disabled behavior, and understandable actions.
-- Use product-specific labels and respect business permissions.
-- Keep consistent action grouping and placement across related screens.
+**MUST**
+- Use the official Secondary Color component variant.
+- Follow approved GEMS semantic colors.
+- Preserve the exact color and visual treatment of the relevant pattern.
 
-### MUST NOT
+**SHOULD**
+- Use Secondary Gray for neutral supporting actions.
 
-- Use, duplicate, recreate, or adapt **Button CCM**.
-- Create custom button variants, colors, sizes, or states.
-- Hardcode styling outside official GEMS components or tokens.
-- Detach official GEMS Button instances without explicit authorization.
-- Make all buttons Primary.
-- Automatically make every `Edit` action Primary.
-- Automatically make every destructive action solid red.
+**MUST NOT**
+- Make every negative action solid red.
 - Use Secondary Color for all supporting actions.
-- Introduce unsupported icon sizes or placements.
-- Remove keyboard-focus visibility.
-- Allow disabled actions to execute.
-- Invent actions or alter business workflows based on visual examples.
-- Treat example button combinations as mandatory across all products.
+- Create custom outline colors or borders.
+- Treat every Edit action as requiring colored emphasis.
 
-**Fallback:** If no exact contextual pattern exists, use the closest existing **GEMS General Button** configuration based on action hierarchy and purpose. Never use CCM or create a custom button as a fallback.
+## 5. Secondary Gray Button
 
+### 5.1 Definition
+
+Secondary Gray is a neutral supporting button used for alternatives, cancellation, navigation, editing, and utility actions.
+
+### 5.2 When to Use
+
+- Cancel an operation.
+- Return to a previous screen.
+- Edit data when editing is not the main action.
+- Export or download data.
+- Perform a standalone utility action.
+
+### 5.3 Examples
+
+| Context | Button Label | Variant |
+|---|---|---|
+| Modal | Batal | Secondary Gray |
+| Navigation | Kembali | Secondary Gray |
+| Page Header | Ekspor Data | Secondary Gray |
+| Detail Page | Edit Pesanan | Secondary Gray |
+| Live Charging Session | Edit | Secondary Gray |
+| Utility | Unduh Kode QR | Secondary Gray |
+
+### 5.4 Rules
+
+**MUST**
+- Preserve official neutral GEMS styling.
+- Maintain lower visual priority than the main action when grouped with Primary.
+
+**SHOULD**
+- Be the default supporting choice alongside Primary where the relevant pattern supports it.
+
+**MAY**
+- Be used without a Primary button.
+- Serve as a standalone utility action.
+
+**MUST NOT**
+- Automatically become Secondary Color because the action edits data.
+- Become Primary merely because it is the only button.
+- Introduce unsupported neutral color values.
+
+## 6. Tertiary Color Button
+
+### 6.1 Definition
+
+Tertiary Color is used for low-priority additional actions that require subtle contextual color emphasis.
+
+### 6.2 When to Use
+
+- The action is additional rather than primary.
+- Color communicates a relevant distinction.
+- Primary or Secondary emphasis would be excessive.
+- An official GEMS component or contextual pattern supports its use.
+
+### 6.3 Rules
+
+**MUST**
+- Use the official Tertiary Color variant.
+- Preserve hierarchy below Primary and Secondary.
+- Follow the relevant GEMS reference for contextual usage.
+
+**MUST NOT**
+- Use Tertiary Color for the main action.
+- Replace an important confirmation action without an approved pattern.
+- Invent unsupported product-specific usage examples.
+
+**Human Direction:** If no suitable GEMS reference establishes its intended use, request human guidance before introducing a new usage convention.
+
+## 7. Tertiary Gray & Link Buttons
+
+### 7.1 Tertiary Gray — Definition
+
+Tertiary Gray is a neutral, low-emphasis button for additional actions.
+
+### 7.2 Tertiary Gray — When to Use
+
+- The action is not the main priority.
+- The action does not require color emphasis.
+- Secondary Gray would be too visually dominant.
+- The placement follows a relevant GEMS pattern.
+
+### 7.3 Tertiary Gray — Rules
+
+**MUST**
+- Use the official Tertiary Gray variant.
+- Maintain low visual emphasis.
+- Follow contextual GEMS hierarchy.
+
+**MUST NOT**
+- Use it for important primary actions.
+- Use it when consequences require higher emphasis.
+- Invent custom text or background styling.
+
+### 7.4 Link Color & Link Gray
+
+These variants are official GEMS text-style buttons.
+
+**Link Color:** Colored text-based action.
+
+**Link Gray:** Neutral text-based action.
+
+**Rules**
+- MUST use their original GEMS component variants.
+- MUST follow existing GEMS component and UX Pattern usage.
+- MUST preserve official typography, color, spacing, and interaction states.
+- MUST NOT replace standard action buttons solely to save space.
+- MUST NOT invent detailed usage conventions absent from GEMS references.
+- If the appropriate Link variant cannot be determined, use a clearly supported button pattern or request human direction.
+
+## 8. Button Sizes, States & Properties
+
+### 8.1 Available Sizes
+
+Official GEMS General Button sizes:
+
+| Size | Usage Rule |
+|---|---|
+| `sm` | Use where the relevant GEMS component or compact pattern specifies it |
+| `md` | Use where the relevant GEMS component or pattern specifies it |
+| `lg` | Use where the relevant GEMS component or pattern specifies it |
+| `xl` | Use where the relevant GEMS component or pattern specifies it |
+| `2xl` | Use where the relevant GEMS component or pattern specifies it |
+
+**Important:** These descriptions do not establish fixed use cases. The official GEMS component and contextual samples determine the appropriate size.
+
+**Size Rules**
+- MUST use only existing GEMS sizes.
+- MUST preserve the selected size's exact dimensions, padding, typography, and icon properties.
+- MUST keep equivalent buttons consistently sized within the same action group.
+- MUST follow original component sizing inside tables, forms, dialogs, headers, and other components.
+- MUST adapt surrounding layout for responsive behavior without manually changing internal button styling.
+- MUST NOT invent custom width, height, padding, or typography values.
+- MAY use supported width and layout behavior when available through official component properties.
+
+### 8.2 Available States
+
+| State | Trigger | Visual Behavior | Interaction |
+|---|---|---|---|
+| Default | Button is enabled and idle | Official default appearance | Interactive |
+| Hover | Pointer enters button | Official hover appearance | Interactive |
+| Focused | Button receives focus | Official visible focus treatment | Interactive |
+| Disabled | Action unavailable | Official disabled appearance | Not interactive |
+
+### 8.3 Default State
+
+**When to Use:** The action is available.
+
+**MUST**
+- Use the official Default state.
+- Display the correct label and optional icon.
+- Execute the action represented by the label.
+
+**MUST NOT**
+- Keep Hover or Focused styling permanently.
+
+### 8.4 Hover State
+
+**When to Use:** A pointing device hovers over the button.
+
+**MUST**
+- Use the official GEMS Hover state.
+- Preserve the label and intended action.
+- Return to the appropriate non-hover state when the pointer leaves.
+
+**MUST NOT**
+- Create a custom hover color.
+- Treat Hover as a click or selected state.
+
+### 8.5 Focused State
+
+**When to Use:** A button receives keyboard or equivalent focus.
+
+**MUST**
+- Use the official GEMS Focused state.
+- Preserve visible focus indication.
+- Support keyboard interaction.
+
+**MUST NOT**
+- Remove the focus indicator without an approved accessible replacement.
+
+### 8.6 Disabled State
+
+**When to Use**
+- Required conditions are incomplete.
+- The action is unavailable in the current process status.
+- Business rules restrict the action.
+- User permissions prohibit the action and the approved UI pattern displays it as disabled.
+
+**MUST**
+- Use the official Disabled state.
+- Prevent the action from executing.
+- Explain unavailable actions when the reason is not obvious.
+
+**MUST NOT**
+- Use visual opacity alone as a substitute for official Disabled styling.
+- Allow interaction as if enabled.
+- Use Disabled instead of proper form validation and feedback.
+- Display a disabled control when product authorization rules require hiding the action entirely.
+
+### 8.7 Button Colors
+
+- MUST use official GEMS General semantic colors and component properties.
+- MUST follow the GEMS Foundation Color Guidelines.
+- MUST preserve approved positive, negative, and neutral styling.
+- MUST NOT invent HEX, RGB, HSL, or unsupported color combinations.
+- MUST NOT use CCM-specific color tokens or styles.
+- MUST NOT choose red or green solely from the action label without checking its context.
+
+### 8.8 Button Icons
+
+- MUST use official GEMS icons according to `icons.md`.
+- MUST match the Button component's supported icon configuration.
+- MUST preserve icon size, alignment, spacing, and color.
+- MAY use icon-only configurations when supported by the official component and UX context.
+- MUST provide an understandable accessible name for icon-only actions.
+- MUST NOT replace official component icons with arbitrary alternatives.
+- MUST NOT add decorative icons when unnecessary or inconsistent with GEMS patterns.
+
+### 8.9 Unsupported States
+
+Do not invent new visual variants for loading, active, pressed, success, or error states.
+
+When such behavior is required, use an existing GEMS component or approved UX Pattern that explicitly supports it.
+
+## 9. Contextual Button Patterns
+
+The following examples define approved contextual usage. They are **not universal layouts** for every product.
+
+### 9.1 Form Actions
+
+**Case:** `Batal` + `Simpan`
+
+| Button | Variant | Priority |
+|---|---|---|
+| Batal | Secondary Gray | Supporting |
+| Simpan | Primary | Main |
+
+**Rules**
+- SHOULD use Secondary Gray + Primary when this combination fits the GEMS form pattern.
+- MUST give the save action higher visual priority.
+- MUST preserve the relevant GEMS form-action placement and order.
+
+### 9.2 Positive Confirmation
+
+**Case:** `Batal` + `Konfirmasi`
+
+| Button | Variant |
+|---|---|
+| Batal | Secondary Gray |
+| Konfirmasi | Primary — Green Solid |
+
+**Rules**
+- MUST use approved positive styling only when the official GEMS pattern supports it.
+- MUST maintain clear hierarchy between cancel and confirm.
+- MUST NOT introduce green confirmation styling as a universal default.
+
+### 9.3 Negative Confirmation
+
+**Case:** `Batal` + `Konfirmasi`
+
+| Button | Variant |
+|---|---|
+| Batal | Secondary Gray |
+| Konfirmasi | Primary — Red Solid |
+
+**Rules**
+- MUST follow the approved negative confirmation pattern.
+- MUST NOT use positive styling for a destructive or negative confirmation.
+- MUST NOT make every destructive action solid red outside its specific context.
+
+### 9.4 Approval Decision
+
+**Case:** `Tolak` + `Setujui`
+
+| Button | Visual |
+|---|---|
+| Tolak | Red Solid |
+| Setujui | Green Solid |
+
+**Rules**
+- MAY use two solid buttons only when an approved GEMS decision pattern explicitly supports them.
+- MUST preserve their distinct meanings.
+- MUST NOT apply the two-solid-button combination to ordinary forms.
+
+**Scope:** This section defines Button appearance only. Approval permissions, transitions, and workflows MUST come from product requirements or the relevant UX Pattern.
+
+### 9.5 Page Header Actions
+
+**Case:** `Ekspor Data` + `Ubah Data Aset`
+
+| Button | Variant |
+|---|---|
+| Ekspor Data | Secondary Gray |
+| Ubah Data Aset | Primary |
+
+**Rules**
+- SHOULD use Primary for the main page action.
+- SHOULD use Secondary Gray for supporting export or utility actions.
+- MUST follow the relevant GEMS Page Header layout and action order.
+- MUST adapt available actions to the actual product module.
+
+### 9.6 Table Row Actions
+
+**Case:** `Ubah Pesanan`
+
+| Button | Variant |
+|---|---|
+| Ubah Pesanan | Secondary Color |
+
+**Rules**
+- MAY use Secondary Color for contextual table-row actions when supported by GEMS.
+- MUST preserve button size and placement defined by the table pattern.
+- MUST NOT assume every Edit action should be Primary.
+- MUST NOT overcrowd table cells with unnecessary actions.
+
+### 9.7 Detail Page Actions
+
+**Case:** `Hapus` + `Edit Pesanan`
+
+| Button | Variant |
+|---|---|
+| Hapus | Secondary Color — Red Outline |
+| Edit Pesanan | Secondary Gray |
+
+**Rules**
+- MAY combine Secondary Color and Secondary Gray.
+- MUST preserve the distinction between destructive and neutral actions.
+- MUST NOT force a Primary button when no action requires that hierarchy.
+- MUST follow approved destructive-action confirmation behavior when applicable.
+
+### 9.8 Active Process Actions
+
+**Case:** Live Charging Session
+
+| Button | Variant | Purpose |
+|---|---|---|
+| Edit | Secondary Gray | Modify session information |
+| Stop Charging | Secondary Color — Red Outline | Stop an active charging process |
+
+**Rules**
+- MAY use Secondary Gray for supporting edits.
+- MAY use Secondary Color Red Outline for approved process-stopping actions.
+- MUST preserve the actual business consequence of each action.
+- MUST NOT automatically apply solid red to every process-stopping action.
+
+### 9.9 Standalone Utility Actions
+
+**Case:** `Unduh Kode QR`
+
+| Button | Variant |
+|---|---|
+| Unduh Kode QR | Secondary Gray |
+
+**Rules**
+- MAY use Secondary Gray independently.
+- MUST NOT force a Primary variant for standalone utility actions.
+- MUST preserve the correct label, icon, and interaction behavior.
+
+### 9.10 General Contextual Rules
+
+- MUST select patterns according to the actual page and workflow.
+- MUST use GEMS Page Samples and UX Patterns for hierarchy, placement, grouping, and responsiveness.
+- MUST preserve official component styling even when sample layouts are adapted.
+- MUST NOT copy sample button labels unrelated to the product.
+- MUST NOT assume every page or action group requires a Primary button.
+- MUST NOT change business workflows solely because a visual example contains an action.
+
+## 10. Button Labels, Placement & Grouping
+
+### 10.1 General Label Rules
+
+Button labels MUST:
+- Clearly describe the resulting action.
+- Use terminology from the approved HSD/BRD or product requirements.
+- Be concise and understandable.
+- Remain consistent across equivalent workflows.
+- Match the actual operation and user permissions.
+
+**MUST NOT**
+- Use vague labels where a specific action is needed.
+- Copy sample content that does not apply to the product.
+- Invent unsupported actions.
+- Add redundant buttons solely to fill layout space.
+
+### 10.2 Label Examples
+
+| Action | Recommended Label |
+|---|---|
+| Save changes | Simpan Perubahan |
+| Create order | Buat Pesanan |
+| Submit request | Kirim Pengajuan |
+| Delete record | Hapus |
+| Cancel action | Batal |
+| Export records | Ekspor Data |
+| Download QR | Unduh Kode QR |
+| Stop charging | Stop Charging |
+
+These are contextual examples, not fixed labels for all products.
+
+### 10.3 Button Placement
+
+**MUST**
+- Follow the relevant GEMS component, Page Sample, or UX Pattern.
+- Preserve clear visual distinction between main and supporting actions.
+- Group related actions consistently.
+- Use official GEMS spacing and alignment.
+- Follow `spacing-radius.md` for surrounding layout spacing.
+- Keep equivalent action groups consistent across screens.
+- Adapt layout responsively using existing GEMS patterns.
+
+**Context Rules**
+- **Forms:** Follow the official form-action group.
+- **Dialogs:** Follow the relevant confirmation-action pattern.
+- **Page Headers:** Follow GEMS Page Header action positioning.
+- **Tables:** Follow the relevant row-action size and placement.
+- **Detail Pages:** Group actions based on priority and consequence.
+- **Active Processes:** Distinguish supporting actions from process-control actions.
+- **Utilities:** Avoid excessive visual emphasis.
+
+**MUST NOT**
+- Change button hierarchy just to fit available space.
+- Invent custom internal padding or dimensions.
+- Place unrelated actions in one group without contextual justification.
+- Reorder actions contrary to an applicable GEMS pattern.
+- Create unnecessary duplicate actions.
+
+## 11. Specialized Button Components
+
+### 11.1 Button Close X
+
+**Source:** [GEMS Button Close X](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=310-1955)
+
+Use the official GEMS Button Close X for dismissing or closing supported UI surfaces.
+
+**Available component properties include:**
+- Supported sizes.
+- Light/dark background configuration.
+- Official interaction states.
+
+**Rules**
+- MUST use the original Button Close X component.
+- MUST select the correct size and background configuration.
+- MUST follow the relevant GEMS dialog, panel, or overlay placement.
+- MUST preserve accessible close behavior.
+- MUST NOT manually recreate an X icon button.
+- MUST NOT use a regular Button as a visual substitute when GEMS specifies Button Close X.
+
+### 11.2 Social Button
+
+**Source:** [GEMS Social Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=1869-10020)
+
+Use only for supported social authentication or integration actions.
+
+**Official component options include:**
+- Social provider.
+- Supporting text.
+- Theme.
+- Interaction state.
+
+**Rules**
+- MUST use the official Social Button component.
+- MUST select an available provider and theme.
+- MUST preserve existing logos, typography, spacing, and state properties.
+- MUST NOT invent unsupported providers.
+- MUST NOT add authentication methods absent from product requirements.
+- MUST NOT treat social-provider brand themes as permission to use CCM styling.
+
+### 11.3 Social Button Groups
+
+**Source:** [GEMS Social Button Groups](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=1869-10291)
+
+Use the official grouping component when a relevant GEMS pattern requires multiple social actions.
+
+**Rules**
+- MUST preserve official group layout and supported themes.
+- MUST follow available button/icon group styles.
+- MUST include only product-supported providers.
+- MUST coordinate authentication content with `authentication.md`.
+- MUST NOT create custom social-button arrangements when an official component exists.
+
+## 12. AI Implementation Rules & Restrictions
+
+### 12.1 Button Selection Rules
+
+When creating or modifying an interface:
+
+1. **Identify Action:** Read the product requirements and determine what the user can do.
+2. **Identify Context:** Determine whether the action belongs to a Form, Dialog, Page Header, Table, Detail Page, Card, Active Process, or Utility Area.
+3. **Determine Priority:** Classify it as Main, Supporting, Contextual, or Additional.
+4. **Select Component & Variant:** Use the official GEMS General Button and Button Usage Matrix.
+5. **Apply Properties:** Select the official size, color, icon configuration, and interaction state.
+6. **Follow Contextual Pattern:** Match the relevant GEMS component, Page Sample, or UX Pattern for placement and grouping.
+7. **Resolve Exceptions:** If an unsupported design or business decision is necessary, request Human Approval before introducing it.
+
+These steps are implementation instructions. Do not generate a separate AI-validation report unless requested.
+
+### 12.2 Strict CCM Exclusion
+
+**MUST NOT**
+- Use Button CCM components, instances, variants, or styling.
+- Copy CCM-specific Button colors, typography, effects, spacing, or states.
+- Duplicate CCM buttons into General components.
+- Recreate CCM buttons manually.
+- Use CCM buttons as a fallback.
+- Transfer CCM Button styling from Page Samples into General products.
+
+If a referenced screen contains CCM Button styling, follow its relevant content or workflow only. Implement the action using an appropriate official GEMS General Button.
+
+### 12.3 Strict Button Rules
+
+**MUST**
+- Use existing official GEMS General Button components.
+- Preserve original Figma component references and supported properties.
+- Follow official hierarchy, size, color, typography, icons, and states.
+- Follow GEMS Foundation Guidelines and relevant component guidelines.
+- Preserve consistent grouping, placement, and visual priority.
+- Follow product permissions, terminology, and business workflows.
+- Maintain accessible Focused and Disabled behavior.
+
+**MUST NOT**
+- Create new or duplicate Button variants.
+- Introduce custom Button styling or hardcoded colors.
+- Modify official component properties outside supported variants.
+- Detach official component instances without authorization.
+- Use Primary for every action.
+- Assume every Edit action requires Primary.
+- Assume every Hapus action requires Red Solid.
+- Use Secondary Color for every supporting action.
+- Replace a required standard Button with a Link variant merely to save space.
+- Remove visible focus treatment.
+- Allow Disabled actions to execute.
+- Invent unsupported visual states.
+- Add arbitrary icons or unsupported dimensions.
+- Treat contextual examples as universal rules.
+- Invent business actions, permissions, or workflow transitions.
+- Use CCM Button under any circumstances.
+
+### 12.4 Human Approval
+
+Request Human Approval only when:
+- A required Button component or variant does not exist in GEMS.
+- A new visual treatment or unsupported state is necessary.
+- The intended use of an undocumented variant cannot be established from GEMS.
+- A business action, permission, or workflow cannot be determined from the supplied product requirements.
+
+Consolidate related questions into one confirmation whenever possible.
+
+**Fallback:** Use the closest officially supported GEMS General Button configuration according to action purpose, priority, and context. If that would require inventing a design or business rule, stop and request human direction. Never use CCM as a fallback.
+
+## 13. Figma Reference & Related Guidelines
+
+### Primary Reference
+
+[GEMS General Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=294-4425)
+
+### Contextual References
+
+Use the connected GEMS Design System:
+
+- **GEMS Components:** Official button application inside reusable components.
+- **GEMS Page Samples:** Hierarchy, size, grouping, and placement in complete pages.
+- **GEMS UX Patterns:** Button behavior and action combinations within user workflows.
+
+Read only references relevant to the task.
+
+### Related GEMS Guidelines
+
+Apply the existing project guidelines when relevant:
+
+- `foundation/color.md` — Semantic color usage.
+- `foundation/typography.md` — Official Text Styles.
+- `foundation/spacing-radius.md` — Layout spacing and radius.
+- `foundation/effects.md` — Official effect styles.
+- `components/icons.md` — Icon usage and sizing.
+- `components/authentication.md` — Authentication and social actions.
+- Other relevant GEMS component guidelines for the current page.
+
+Use the actual repository paths if filenames differ.
+
+---
+
+**FINAL RULE:** Every Button MUST use an official **GEMS General component**, with the correct hierarchy, size, state, color, icon, placement, and product-specific action. **Never use CCM Button. Never invent unsupported Button styling or behavior.**
