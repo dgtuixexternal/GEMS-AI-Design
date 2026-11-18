@@ -1,0 +1,310 @@
+
+# GEMS Design System — Application Navigation
+
+> **MANDATORY:** All application navigation MUST use official GEMS Application Navigation components. Navigation content MUST reflect actual product requirements, user roles, and approved information architecture. Red/Primary is the default theme.
+
+## 1. Sources & Priority
+
+**Source of Truth**
+- [GEMS Application Navigation](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=345-1601)
+- [GEMS Slide Bar](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=2714-24723)
+- [GEMS Nav Item Base](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=345-5116)
+- [GEMS Nav Item Button](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=410-2248)
+- [GEMS Nav Item Dropdown](https://www.figma.com/design/vaAJgd6yZ7l9TrIuF04671/GEMS-Design-System?node-id=345-5292)
+- GEMS Page Samples & UX Pattern Samples within the same Figma file.
+- GEMS Foundation `logo.md` for product branding.
+
+**Priority Order**
+1. **GEMS Components:** Use official Application Navigation instances, variants, properties, and states.
+2. **Product Requirements:** Follow approved HSD/BRD, Information Architecture, and role permissions for navigation content.
+3. **Page Samples & UX Patterns:** Read relevant examples for navigation placement, structure, and interaction.
+4. **General UX Principles:** Apply only when GEMS has no specific guidance.
+
+Read only references relevant to the current task. Do not scan unrelated pages or components.
+
+The previous standalone Sidebar guideline is superseded by this Application Navigation guideline.
+
+## 2. Official Navigation Configuration
+
+### GEMS Slide Bar
+
+| Theme | State | Width |
+|---|---|---|
+| Primary | Expanded | 312px |
+| Primary | Collapsed | 72px |
+| Light | Expanded | 312px |
+| Light | Collapsed | 72px |
+
+**Theme Rules**
+- `Theme=Primary` (Red) is the mandatory default.
+- `Theme=Light` is allowed only when required by an approved design or explicitly requested by the user.
+- Never create new themes or manually recolor the official component.
+- Maintain consistent theme usage across related application screens.
+
+**Layout State**
+- `Expanded` — Full navigation with visible menu labels.
+- `Collapsed` — Compact navigation using the official component variant.
+- Use Expanded as the default desktop state unless approved requirements specify otherwise.
+- Preserve the selected theme and active menu when switching states.
+- Use official variants; never resize components manually.
+
+### Navigation Items
+
+Use official GEMS Application Navigation components:
+
+- `_Nav item base`
+- `_Nav item button`
+- `_Nav item dropdown base`
+
+Follow available component properties, including:
+- Theme
+- Current / Active
+- State
+- Size
+- Open / Closed
+- Text visibility, where supported
+
+Different navigation components may expose different property values. Use the actual variants defined by each component.
+
+Do not assume the parent Slide Bar theme and nested navigation item theme use identical property names.
+
+## 3. Product-Based Navigation Content
+
+AI MUST configure navigation according to the actual product, not generic sample menus.
+
+### Product Context
+
+Before configuring navigation, identify:
+
+- Product and application name.
+- Business purpose and supported modules.
+- Main features and subfeatures.
+- User roles and access permissions.
+- Information Architecture and menu hierarchy.
+- Existing application navigation, if any.
+- Current page and active route.
+
+**Content Priority**
+1. Approved HSD/BRD and Role Access Matrix.
+2. Approved Information Architecture or sitemap.
+3. Existing product design and navigation.
+4. Explicit user requirements.
+
+If essential information is unavailable, request clarification instead of inventing business requirements.
+
+### Menu Configuration
+
+Navigation MUST reflect actual product features.
+
+| Navigation Data | Requirement |
+|---|---|
+| Menu Label | Use approved business terminology |
+| Menu Icon | Use relevant official GEMS icon |
+| Parent Menu | Follow approved hierarchy |
+| Submenu | Reflect actual subfeatures |
+| Menu Order | Follow approved information architecture |
+| Route | Match the correct destination |
+| Active Menu | Match the current page |
+| Role Access | Follow user permissions |
+| Visibility | Show only permitted navigation items |
+
+**Rules**
+- Use meaningful menu labels based on the product.
+- Preserve terminology from HSD/BRD.
+- Maintain consistent labels between navigation and page titles.
+- Group related features under appropriate parent menus.
+- Preserve menu order and hierarchy across related screens.
+- Use only real or approved product features.
+- Do not copy sample navigation content unless it matches the product.
+- Do not invent modules, menu names, routes, or permissions.
+- Do not use dummy menu content in final designs unless explicitly requested.
+
+**Core Principle:** GEMS defines HOW navigation looks and behaves. Product requirements define WHAT menus and features appear.
+
+## 4. Product Logo & Branding
+
+Logo selection MUST follow GEMS Foundation `logo.md`.
+
+**Rules**
+- Identify product identity from explicit user instructions or project context.
+- Use the matching official GEMS Logo Component when available.
+- Apply the selected logo within the official navigation branding area.
+- Preserve original logo proportions, colors, and visual properties.
+- Maintain consistent branding across related screens.
+- Do not automatically use Digitech or BIB as a default logo.
+
+**Human Approval**
+
+If the required product logo is unavailable in GEMS, AI MUST ask the user to choose:
+
+1. Use an existing GEMS logo with explicit approval.
+2. Upload the official product logo.
+
+Never substitute or generate a product logo without authorization.
+
+## 5. Navigation Behavior & States
+
+### Active Navigation
+
+- Active menu MUST reflect the current page or route.
+- Use official GEMS Current/Active component variants.
+- Maintain active state when navigation is Expanded or Collapsed.
+- Update active state when users navigate between pages.
+- When a submenu page is active, preserve the correct parent-child relationship.
+- Never display conflicting active navigation items.
+
+### Submenu Behavior
+
+- Use official GEMS Dropdown Navigation components.
+- Apply existing `Open=True` or `Open=False` variants when supported.
+- Preserve approved parent-child menu hierarchy.
+- Maintain active submenu visibility according to component behavior.
+- Never create unsupported submenu levels or custom dropdown components.
+
+### Interaction States
+
+Use available official variants for:
+
+- Default
+- Hover
+- Focused
+- Current / Active
+- Open / Closed
+
+**Rules**
+- Preserve original state colors, typography, spacing, icons, and indicators.
+- Do not invent hover, focused, or selected styles.
+- Maintain keyboard navigation and visible focus indicators.
+- Provide accessible names for icon-only navigation.
+- Use semantic active-page indicators where supported.
+- Never use visual color alone as the only indication of active navigation.
+
+## 6. Role-Based Navigation
+
+Navigation MUST respect the product's approved Role Access Matrix.
+
+**Rules**
+- Show menu items according to the current user's permissions.
+- Hide restricted navigation items when required by the access rules.
+- Maintain approved menu hierarchy for each role.
+- Keep navigation styling consistent across roles.
+- Use the same official GEMS components for all roles.
+- Do not create separate custom navigation components for individual roles.
+- Do not invent role permissions or menu visibility rules.
+- Hiding a menu MUST NOT be treated as a replacement for backend authorization.
+
+If role permissions are unspecified and affect navigation content, request clarification.
+
+## 7. App Shell, Navbar & Responsive Behavior
+
+### App Shell Integration
+
+- Use Application Navigation within the official GEMS App Shell.
+- Follow relevant GEMS Page Samples for navigation and content placement.
+- Maintain consistent navigation across Dashboard, List, Detail, Form, Reports, and Settings pages belonging to the same application.
+- Use official GEMS Navbar components when required.
+- Synchronize navigation state with Navbar controls according to supported component behavior.
+- Keep Sidebar, Navbar, and content layout aligned without unsupported manual offsets.
+- Do not add duplicate navigation inside page content.
+
+### Expanded / Collapsed Behavior
+
+When users expand or collapse navigation:
+- Switch to the corresponding official component variant.
+- Preserve the selected theme.
+- Preserve the active route and menu hierarchy.
+- Maintain accessible navigation controls.
+- Adjust the App Shell layout according to the official GEMS pattern.
+
+### Responsive Navigation
+
+- Use responsive navigation components and patterns provided by GEMS.
+- Preserve important navigation functions across supported breakpoints.
+- Do not assume the Collapsed desktop variant is automatically a mobile navigation pattern.
+- Do not create custom mobile drawers or hamburger menus without an approved reference.
+- If no suitable responsive pattern exists, request human direction.
+
+### When Not to Use
+
+Do not add Application Navigation automatically to:
+- Login and Authentication pages with dedicated layouts.
+- Standalone public pages.
+- Modals and Dialogs.
+- Individual Cards or Tables.
+- Other contexts that do not use the application App Shell.
+
+Follow approved GEMS layout patterns for these cases.
+
+## 8. Design System Compliance
+
+Application Navigation MUST preserve official GEMS properties.
+
+| Property | Required Source |
+|---|---|
+| Colors | GEMS Foundation Color |
+| Typography | GEMS Foundation Typography |
+| Spacing & Radius | GEMS Foundation Spacing & Radius |
+| Icons | Official GEMS Icon Components |
+| Effects | GEMS Foundation Effect Styles |
+| Logo | GEMS Foundation Logo |
+| Interaction States | Official Application Navigation variants |
+| Layout | Official GEMS Components and App Shell |
+
+**Rules**
+- Reuse existing component instances.
+- Preserve component bindings and properties.
+- Do not detach or manually recreate official components.
+- Do not modify official dimensions, visual styles, or supported interactions.
+- Use existing design tokens instead of custom values.
+- Maintain consistency with the current product's approved design.
+
+## 9. Human Approval & Missing Requirements
+
+Human Approval is REQUIRED when:
+
+- Required navigation behavior is unsupported by GEMS.
+- A new component or variant is necessary.
+- The product logo is unavailable.
+- A custom responsive navigation pattern is required.
+- An approved navigation structure must be changed.
+- Business requirements contain conflicting menu or access rules.
+
+**Rules**
+- Explain the missing requirement or limitation.
+- Present available GEMS-compatible options.
+- Request explicit user approval before introducing an alternative.
+- Do not interpret silence as approval.
+- Continue unrelated design work when possible without inventing unresolved navigation requirements.
+
+## 10. Strict Navigation Rules
+
+**MUST**
+- Use official GEMS Application Navigation components.
+- Use the Red/Primary theme by default.
+- Select official Expanded or Collapsed variants.
+- Configure navigation content according to actual product requirements.
+- Follow approved menu hierarchy, routes, and role permissions.
+- Use official GEMS navigation icons and interaction states.
+- Apply product logos according to `logo.md`.
+- Maintain active states and submenu relationships.
+- Synchronize navigation with the approved App Shell and Navbar.
+- Preserve all GEMS Foundation and Component specifications.
+
+**MUST NOT**
+- Create custom Sidebar or Application Navigation components when official components exist.
+- Use external navigation component libraries.
+- Manually recreate existing GEMS components using Frames.
+- Modify official colors, typography, spacing, radius, effects, or icons.
+- Invent themes, component variants, or interaction states.
+- Use Light instead of Primary based only on visual preference.
+- Substitute product logos without human approval.
+- Invent unsupported business modules, menu items, routes, or permissions.
+- Copy sample menu labels as real product data without justification.
+- Change approved menu hierarchy or ordering without authorization.
+- Ignore active states or role-based visibility.
+- Create custom mobile navigation without an approved reference.
+- Introduce unnecessary decorative elements or unsupported UI patterns.
+
+**Fallback:** If official GEMS Application Navigation does not support a required configuration, preserve available official components and request Human Approval before introducing an alternative.
+
+**Core Principle:** Use official GEMS Application Navigation, maintain Red/Primary as the default, and configure navigation content according to the actual product, approved business requirements, and user access permissions.
